@@ -22,7 +22,7 @@ var shippingSchema = mongoose.Schema({
 var productSchema = mongoose.Schema({
   title: String,
   description: String,
-  imageUrl: String
+  imageUri: String
 })
 
 // module.exports = mongoose.model('User', userSchema)

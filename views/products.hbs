@@ -1,17 +1,12 @@
 <h3>Products</h3>
 
 
-<table class="table table-hover">
-  <thead>
-    <td><b>Name</b></td>
-  </thead>
-  <tbody>
+<div class="container">
+
+
     {{#each products}}
-    <tr>
-      <td>{{title}}</td>
-        <a href="/products/{{id}}">View Product, if you dare!</a>
-      </td>
-    </tr>
+      <p><b>Name:</b>
+      {{title}}
+      <a href="/products/{{id}}">View Product if you dare</a></p>
     {{/each}}
-  </tbody>
-</table>
+
