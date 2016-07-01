@@ -1,0 +1,17 @@
+<h3>Products</h3>
+
+
+<div class="container">
+
+
+    {{#each products}}
+      <p><b>Name:</b>
+      <p>{{title}}</p>
+      <p>{{description}}</p>
+      <a href="/products/{{_id}}">View Product</a></p>
+      <a href="/cart/delete/{{_id}}">Delete item</a></p>
+    {{/each}}
+      <a href="/cart/delete">Clear cart</a></p>
+      <a href="/">Back to shopping</a></p>
+
+

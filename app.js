@@ -25,6 +25,24 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 
+var FacebookStrategy = require('passport-facebook');
+passport.use(new FacebookStrategy({
+    clientID: 271830313169372,
+    clientSecret: "e729e9aea4bf1f1cc57a900839876963",
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id }, {
+      username: " ",
+      password: " ",
+      facebookId: profile.id
+    }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+
+
 var connect = process.env.MONGODB_URI || require('./models/connect');
 mongoose.connect(connect);
 

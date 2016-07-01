@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var findOrCreate = require('mongoose-findorcreate')
+
 var userSchema = mongoose.Schema({
 	username: String, // THIS IS A PHONE NUMBER !! PASSPORT REQUIRES THE NAME A USERNAME
   	password: String,
@@ -8,6 +10,8 @@ var userSchema = mongoose.Schema({
     ref: 'Shipping'
   }
 })
+userSchema.plugin(findOrCreate);
+
 var shippingSchema = mongoose.Schema({
   name: String,
   address1: String,

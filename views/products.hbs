@@ -6,7 +6,20 @@
 
     {{#each products}}
       <p><b>Name:</b>
-      {{title}}
-      <a href="/products/{{id}}">View Product if you dare</a></p>
+      <div class="title">{{title}}
+        <a href="/products/{{_id}}">View Product if you dare</a></p>
+        <a href="/products/{{_id}}"><img src={{imageUri}} width="100" style="display:none;" class="image"></a>
+      </div>
     {{/each}}
 
+ <a href="/cart">View your cart</a>
+ <a href="/logout">Logout</a>
+
+<script>
+      $(".title").mouseover(function(){
+         $(this).children("a").children(".image").show();
+      })
+      $(".title").mouseout(function(){
+         $(this).children("a").children(".image").hide();
+      })
+</script>

@@ -59,4 +59,36 @@ router.post('/shipping', function(req, res, next){
 })
 
 
+router.get('/cart', function(req, res, next) {
+	res.render('cart', {
+		products: req.session.cart
+	})	
+})
+
+router.get('/cart/add/:id', function(req, res, next) {
+ Product.findById(req.params.id, function(err, product) {
+	req.session.cart.push(product);
+	res.redirect("/cart");
+
+
+})
+})
+
+router.get('/cart/delete/:id', function(req, res, next) {
+	for (var i = 0; i < req.session.cart.length ; i++){
+	if (req.session.cart[i]._id === req.params.id){
+		req.session.cart.splice(i, 1)
+		 res.redirect("/cart");
+
+	
+}
+}
+})
+router.get('/cart/delete', function(req, res, next) {
+req.session.cart = [];
+res.redirect("/cart");
+});
+
+
+
 module.exports = router;

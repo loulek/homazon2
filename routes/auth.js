@@ -50,8 +50,24 @@ module.exports = function(passport) {
 
   // POST Login page
   router.post('/login', passport.authenticate('local'), function(req, res) {
+    if(!req.session.cart){
+      req.session.cart = [];
+    }
     res.redirect('/shipping');
   });
+
+
+
+router.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
 
   // GET Logout page
   router.get('/logout', function(req, res) {
