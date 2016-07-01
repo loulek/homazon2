@@ -14,16 +14,15 @@ products.forEach(function(product){
 	var product = new Product({
 		"imageUri": product.imageUri,
 		"description" : product.description,
-		"title" : product.title
+		"title" : product.title,
+		"price" : product.price
 	});
 	console.log(product);
 
 	product.save(function(err){
 		if(err){
 			console.log(err)
-		} else {
-			console.log("saved restaurant");	
-		}
+		} 
 		
 	})
 

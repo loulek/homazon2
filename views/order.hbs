@@ -1,0 +1,31 @@
+<h3>Products</h3>
+
+
+<div class="container">
+<p><b>Thank you for your purchase</b>
+{{#if hasone}}
+<p>Your purchased {{order.contents.length}} item:
+{{else}}
+<p>Your purchased these {{order.contents.length}} items:
+{{/if}} 
+
+    {{#each order.contents}}
+      <p><b>{{title}}</p></b>
+      <p>{{price}}</p>
+      <p>{{description}}</p>
+    {{/each}}
+    <b>Ships to</b>
+    <p>{{order.shipping.address1}}
+    <p>{{order.shipping.address2}}
+    <p>{{order.shipping.city}}
+    <p>{{order.shipping.state}}
+    <p>{{order.shipping.zip}}
+    <p><b>Total amount</b>
+    <p>Subtotal: ${{order.subtotal}}
+    <p>Total: ${{order.total}}
+
+    <p><b>Your purchase will be shipped in 2 days</b></p>
+
+      <p><a href="/">Back to shopping</a></p>
+   
+
